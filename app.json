@@ -1,1 +1,7 @@
-{"name": "Capstone Project Hezron","description": "A Node.js app for my capstone project using Express 4","repository": "https://github.com/Hezrondavid/Capstone-project-hezron","logo": "","keywords": ["node", "express", "capstone", "project"]}
+{
+  "name": "Capstone Project Hezron",
+  "description": "A Node.js app for my capstone project using Express 4",
+  "repository": "https://github.com/Hezrondavid/Capstone-project-hezron",
+  "logo": "https://your-logo-url-if-any",
+  "keywords": ["node", "express", "capstone", "project"]
+}
