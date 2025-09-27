@@ -96,17 +96,17 @@ sudo docker run -d --name sonarqube --restart unless-stopped \
   -v sonarqube_logs:/opt/sonarqube/logs \
   sonarqube:lts-community
 
-# Minikube install
+# Install Minikube
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
-# kubectl install with retry and path setup
-curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+# Install kubectl (hardcoded version)
+curl -LO https://dl.k8s.io/release/v1.29.4/bin/linux/amd64/kubectl
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 echo 'export PATH=$PATH:/usr/local/bin' >> /home/ec2-user/.bashrc
 chown ec2-user:ec2-user /usr/local/bin/kubectl
 
-# Minikube environment and start
+# Start Minikube as ec2-user with Docker driver
 export CHANGE_MINIKUBE_NONE_USER=true
 export MINIKUBE_HOME=/home/ec2-user
 export USER=ec2-user
