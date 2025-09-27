@@ -1,1 +1,27 @@
-{\n  "name": "capstone-project-hezron",\n  "version": "0.2.0",\n  "description": "A Node.js app for my capstone project using Express 4",\n  "main": "index.js",\n  "scripts": {\n    "start": "node index.js"\n  },\n  "dependencies": {\n    "express": "^4.13.3"\n  },\n  "engines": {\n    "node": "4.0.0"\n  },\n  "repository": {\n    "type": "git",\n    "url": "https://github.com/Hezrondavid/Capstone-project-hezron"\n  },\n  "keywords": [\n    "node",\n    "express",\n    "capstone",\n    "project"\n  ],\n  "author": "Hezron david sebastian",\n  "license": "MIT"\n}
+{
+  "name": "capstone-project-hezron",
+  "version": "0.2.0",
+  "description": "A Node.js app for my capstone project using Express 4",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "engines": {
+    "node": "4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hezrondavid/Capstone-project-hezron"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "capstone",
+    "project"
+  ],
+  "author": "Hezron david sebastian",
+  "license": "MIT"
+}
