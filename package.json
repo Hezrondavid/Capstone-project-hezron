@@ -4,7 +4,8 @@
   "description": "A Node.js app for my capstone project using Express 4",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "echo \"No tests defined\""
   },
   "dependencies": {
     "express": "^4.13.3"
