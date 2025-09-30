@@ -9,6 +9,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.listen(PORT, () => {
-  console.log(`Node app is running at http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Node app is running at http://0.0.0.0:${PORT}`);
 });
