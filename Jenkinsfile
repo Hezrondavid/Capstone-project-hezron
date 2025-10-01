@@ -5,6 +5,15 @@ pipeline {
     DOCKER_IMAGE = "node-app"
   }
 
+  options {
+    timestamps()
+    disableConcurrentBuilds()
+  }
+
+  triggers {
+    githubPush()
+  }
+
   stages {
     stage('Clone') {
       steps {
@@ -24,9 +33,27 @@ pipeline {
       }
     }
 
-    stage('Code Quality') {
+    stage('SonarQube Analysis') {
       steps {
-        sh 'sonar-scanner'
+        withSonarQubeEnv('sonar-local') {
+          script {
+            def scannerHome = tool 'SonarScanner'
+            sh """
+              "${scannerHome}/bin/sonar-scanner" \
+                -Dsonar.projectKey=node-app \
+                -Dsonar.sources=. \
+                -Dsonar.sourceEncoding=UTF-8
+            """
+          }
+        }
+      }
+    }
+
+    stage('Quality Gate') {
+      steps {
+        timeout(time: 3, unit: 'MINUTES') {
+          waitForQualityGate abortPipeline: true
+        }
       }
     }
 
@@ -35,6 +62,15 @@ pipeline {
         sh 'kubectl apply -f k8s/deployment.yaml'
         sh 'kubectl apply -f k8s/service.yaml'
       }
+    }
+  }
+
+  post {
+    success {
+      echo "✅ Deployment successful. Visit your app at http://<Minikube-IP>:<NodePort>"
+    }
+    failure {
+      echo "❌ Build or quality gate failed. Check logs for details."
     }
   }
 }
