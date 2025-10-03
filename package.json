@@ -2,7 +2,7 @@
   "name": "capstone-project-hezron",
   "version": "0.2.0",
   "description": "A Node.js app for my capstone project using Express 4",
-  "main": "index.js",
+  "main": "app.js"
   "scripts": {
     "start": "node index.js",
     "test": "jest --coverage"
