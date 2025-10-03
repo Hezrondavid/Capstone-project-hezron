@@ -1,19 +1,15 @@
-# Use official Node.js image
-FROM node:18
-
-# Set working directory
+# Stage 1: Build and test
+FROM node:18 AS builder
 WORKDIR /usr/src/app
-
-# Copy package.json and install dependencies
 COPY package*.json ./
-RUN npm install
-
-# Copy the rest of the application
+RUN npm install --include=dev
 COPY . .
+RUN npm test -- --coverage
 
-# Expose the app port
+# Stage 2: Production image
+FROM node:18
+WORKDIR /usr/src/app
+COPY --from=builder /usr/src/app ./
+RUN npm install --omit=dev
 EXPOSE 5000
-
-# Start the app
 CMD ["npm", "start"]
-
