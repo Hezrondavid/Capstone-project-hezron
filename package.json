@@ -4,7 +4,7 @@
   "description": "A Node.js app for my capstone project using Express 4",
   "main": "app.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "jest --coverage"
   },
   "dependencies": {
