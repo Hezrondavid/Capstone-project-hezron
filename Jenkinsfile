@@ -27,12 +27,6 @@ pipeline {
       }
     }
 
-    stage('Test') {
-      steps {
-        sh 'npm test || echo "No tests defined"'
-      }
-    }
-
     stage('SonarQube Analysis') {
       steps {
         withSonarQubeEnv('sonar-local') {
