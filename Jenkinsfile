@@ -29,6 +29,7 @@ pipeline {
 
     stage('Extract Coverage') {
       steps {
+        sh 'mkdir -p coverage'
         sh 'docker cp $(docker create $DOCKER_IMAGE):/usr/src/app/coverage/lcov.info coverage/lcov.info'
       }
     }
