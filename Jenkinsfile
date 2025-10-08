@@ -27,6 +27,12 @@ pipeline {
       }
     }
 
+    stage('Extract Coverage') {
+      steps {
+        sh 'docker cp $(docker create $DOCKER_IMAGE):/usr/src/app/coverage/lcov.info coverage/lcov.info'
+      }
+    }
+
     stage('SonarQube Analysis') {
       steps {
         withSonarQubeEnv('sonar-local') {
@@ -36,7 +42,9 @@ pipeline {
               "${scannerHome}/bin/sonar-scanner" \
                 -Dsonar.projectKey=node-app \
                 -Dsonar.sources=. \
-                -Dsonar.sourceEncoding=UTF-8
+                -Dsonar.sourceEncoding=UTF-8 \
+                -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
+                -Dsonar.javascript.coveragePlugin=lcov
             """
           }
         }
