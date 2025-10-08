@@ -44,11 +44,10 @@ pipeline {
     }
 
     stage('Quality Gate') {
-            steps {
-                echo "Waiting for SonarQube analysis to complete..."
-                sleep 15
-                waitForQualityGate abortPipeline: true
-        }
+      steps {
+        echo "Waiting for SonarQube analysis to complete..."
+        sleep 15
+        waitForQualityGate abortPipeline: true
       }
     }
 
